@@ -23,7 +23,7 @@ jobs:
         with:
           access_token: ${{ github.token }}
   build:
-    runs-on: k8s-runner-2
+    runs-on: self-hosted
     env:
       SCCACHE_CACHE_SIZE: "50G"
     needs: cancel
