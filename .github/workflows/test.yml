@@ -22,10 +22,6 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.0
         with:
           access_token: ${{ github.token }}
-      - name: Install deps tool
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y git clang curl libssl-dev llvm libudev-dev
   build:
     runs-on: self-hosted
     env:
@@ -42,6 +38,10 @@ jobs:
         target: wasm32-unknown-unknown
         override: true
         default: true
+    - name: Install deps tool
+      run: |
+          sudo apt-get update -y
+          sudo apt-get install -y git clang curl libssl-dev llvm libudev-dev
     - name: Install Wasm toolchain
       run: rustup target add wasm32-unknown-unknown
     - name: Check format
